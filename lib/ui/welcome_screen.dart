@@ -27,7 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 color: Colors.blue,
                 onPressed: () {
-                  Navigator.pushNamed(context, "register");
+                  Navigator.pushNamed(context, "/register");
                 }),
             MaterialButton(
                 minWidth: 200.0,
