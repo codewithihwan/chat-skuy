@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -6,6 +7,10 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +26,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  email = value;
+                },
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
                   contentPadding:
@@ -45,7 +52,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  password = value;
+                },
                 decoration: InputDecoration(
                   hintText: 'Enter your password',
                   contentPadding:
@@ -73,6 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 color: Colors.blue,
                 onPressed: () {
+                  print("$email | $password");
                   Navigator.pushNamed(context, "/chat");
                 }),
           ],
