@@ -81,9 +81,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.blue,
-                onPressed: () {
+                onPressed: () async {
                   print("$email | $password");
-                  Navigator.pushNamed(context, "/chat");
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, "/chat");
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
                 }),
           ],
         ),
