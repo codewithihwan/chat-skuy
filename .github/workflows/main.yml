@@ -14,8 +14,3 @@ jobs:
           flutter-version: '1.9.1+hotfix.2'
       - run: flutter pub get
       - run: flutter build apk
-      - name: Create a Release APK
-        uses: subosito/release-action@v1
-        with:
-          artifacts: "build/app/outputs/apk/debug/*.apk"
-          token: ${{ secrets.TOKEN }}
