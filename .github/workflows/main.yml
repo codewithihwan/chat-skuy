@@ -1,5 +1,5 @@
 on: push
-name: Test, Build and Release apk
+name: Build and Release apk
 jobs:
   build:
     name: Build APK
@@ -13,9 +13,9 @@ jobs:
         with:
           flutter-version: '1.9.1+hotfix.2'
       - run: flutter pub get
-      - run: flutter build apk --debug --split-per-abi
+      - run: flutter build apk
       - name: Create a Release APK
-        uses: ncipollo/release-action@v1
+        uses: subosito/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.TOKEN }}
